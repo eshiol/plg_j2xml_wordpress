@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="j2xml" method="upgrade">
+	<name>PLG_J2XML_WORDPRESS</name>
+	<author>Helios Ciancio</author>
+	<creationDate>April</creationDate>
+	<copyright>(C) 2014-2015, Helios Ciancio. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+	<authorEmail>info@eshiol.it</authorEmail>
+	<authorUrl>www.eshiol.it</authorUrl>
+	<version>3.2.16</version>
+	<description>PLG_J2XML_WORDPRESS_XML_DESCRIPTION</description>
+	<updateservers>
+		<server type="extension" priority="1" name="J2XML Wordpress Importer Updates"><![CDATA[http://www.eshiol.it/updates/plugins/j2xml-wordpress-importer-updates?format=xml&dummy=extension.xml]]></server>
+	</updateservers>
+	<files>
+		<filename plugin="wordpress">wordpress.php</filename>
+		<filename>11.xsl</filename>
+		<filename>12.xsl</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_j2xml_wordpress.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_j2xml_wordpress.sys.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_j2xml_wordpress.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_j2xml_wordpress.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="readmore"
+					type="radio"
+					class="btn-group"
+					default="1"
+					label="PLG_J2XML_WORDPRESS_READMORE_LABEL" 
+					description="PLG_J2XML_WORDPRESS_READMORE_DESC"
+					>
+					<option 
+						value="0">JNO</option>
+					<option 
+						value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
