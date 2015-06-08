@@ -1,3 +1,11 @@
+# =========================
+# Reserved files
+# =========================
+
+make.cmd
+CHANGELOG
+LICENSE
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
