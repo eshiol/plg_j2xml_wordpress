@@ -1,6 +1,6 @@
 <!--
 /** 
- * @version		3.1.9 plugins/j2xml/wordpress/12.xsl
+ * @version		3.3.20 plugins/j2xml/wordpress/12.xsl
  * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
@@ -8,7 +8,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2010-2013 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2010-2016 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -32,7 +32,8 @@
 <xsl:key name="categories" match="/rss/channel/item[wp:post_type = 'post']/category[@domain='category']" use="@nicename" />
 
 <xsl:template match="/rss">
-<j2xml version="12.5.0">
+<j2xml version="15.9.0">
+	<xsl:apply-templates select="/rss/channel/wp:author" mode="wp"/>
 	<xsl:apply-templates select="/rss/channel/item[wp:post_type = 'post']/category[@domain='category']" mode="wp">
 		<xsl:sort order="ascending" select="text()"/>	
 	</xsl:apply-templates>
@@ -70,7 +71,10 @@
 <content>
 	<id><xsl:value-of select="wp:post_id"/></id>
 	<title><xsl:value-of select="title"/></title>
-	<catid><xsl:value-of select="category[@domain='category']/@nicename"/></catid>
+	<catid><xsl:choose>
+		<xsl:when test="category[@domain='category']/@nicename != ''"><xsl:value-of select="category[@domain='category']/@nicename"/></xsl:when>
+		<xsl:otherwise>uncategorised</xsl:otherwise>
+	</xsl:choose></catid>
 	<alias><xsl:choose>
 		<xsl:when test="wp:post_name != ''"><xsl:value-of select="wp:post_name"/></xsl:when>
 		<xsl:otherwise><xsl:value-of select="translate(substring-after(link, 'http://'), './?=', '----')"/></xsl:otherwise>
@@ -78,7 +82,7 @@
 	<introtext><xsl:value-of select="content:encoded"/></introtext>
 	<fulltext></fulltext>
 	<state><xsl:choose>
-		<xsl:when test="status = 'publish'">1</xsl:when>
+		<xsl:when test="wp:status = 'publish'">1</xsl:when>
 		<xsl:otherwise>0</xsl:otherwise>
 	</xsl:choose></state>
 	<created><xsl:value-of select="wp:post_date"/></created>
@@ -104,6 +108,28 @@
 	<rating_sum>0</rating_sum>
 	<rating_count>0</rating_count>		
 </content>
+</xsl:template>
+
+<xsl:template match="wp:author" mode="wp">
+<user>
+	<id><xsl:value-of select="wp:author_id"/></id>
+	<name><xsl:value-of select="wp:author_display_name"/></name>
+	<username><xsl:value-of select="wp:author_login"/></username>
+	<email><xsl:value-of select="wp:author_email"/></email>
+	<password></password>
+	<block>1</block>
+	<sendEmail>0</sendEmail>
+	<registerDate><![CDATA[0000-00-00 00:00:00]]></registerDate>
+	<lastvisitDate><![CDATA[0000-00-00 00:00:00]]></lastvisitDate>
+	<activation/>
+	<params><![CDATA[{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}]]></params>
+	<lastResetTime><![CDATA[0000-00-00 00:00:00]]></lastResetTime>
+	<resetCount>0</resetCount>
+	<otpKey/>
+	<otep/>
+	<requireReset>0</requireReset>
+	<group><![CDATA[["Public","Registered"]]]></group>
+</user>
 </xsl:template>
 
 </xsl:stylesheet>
