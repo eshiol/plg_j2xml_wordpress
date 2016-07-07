@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		4.4.22 plugins/j2xml/wordpress/wordpress.php
+ * @version		4.4.23 plugins/j2xml/wordpress/wordpress.php
  * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
@@ -84,7 +84,7 @@ class plgJ2XMLWordpress extends JPlugin
 			$error = true;
 		}
 		
-		if (version_compare(J2XMLVersion::getShortVersion(), '13.8.3') == -1)
+		if (version_compare(J2XMLVersion::getShortVersion(), '16.7.0') == -1)
 		{
 			JLog::add(new JLogEntry(JText::_('PLG_J2XML_WORDPRESS').' '.JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_LIB')),JLOG::WARNING,'plg_j2xml_wordpress');
 			$error = true;

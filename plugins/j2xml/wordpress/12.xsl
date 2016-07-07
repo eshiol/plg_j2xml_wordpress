@@ -1,6 +1,6 @@
 <!--
 /** 
- * @version		3.3.20 plugins/j2xml/wordpress/12.xsl
+ * @version		4.4.23 plugins/j2xml/wordpress/12.xsl
  * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
@@ -8,7 +8,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2010-2016 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2010, 2016 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -90,7 +90,7 @@
 	<created_by_alias></created_by_alias>
 	<modified></modified>
 	<modified_by></modified_by>
-	<publish_up>0000-00-00 00:00:00</publish_up>
+	<publish_up><xsl:value-of select="pubDate"/></publish_up>
 	<publish_down>0000-00-00 00:00:00</publish_down>
 	<images><![CDATA[{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}]]></images>
 	<urls><![CDATA[{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}]]></urls>

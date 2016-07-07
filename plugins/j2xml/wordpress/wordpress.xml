@@ -2,12 +2,12 @@
 <extension version="3.0" type="plugin" group="j2xml" method="upgrade">
   <name>PLG_J2XML_WORDPRESS</name>
   <author>Helios Ciancio</author>
-  <creationDate>June 2016</creationDate>
+  <creationDate>July 2016</creationDate>
   <copyright>(C) 2014, 2016, Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>4.4.22.57</version>
+  <version>4.4.23.60</version>
   <description>PLG_J2XML_WORDPRESS_XML_DESCRIPTION</description>
   <scriptfile>enable.php</scriptfile>
   <files>
