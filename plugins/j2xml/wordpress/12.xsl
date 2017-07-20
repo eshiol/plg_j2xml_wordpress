@@ -1,6 +1,6 @@
 <!--
 /** 
- * @version		4.4.23 plugins/j2xml/wordpress/12.xsl
+ * @version		4.4.24 plugins/j2xml/wordpress/12.xsl
  * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
@@ -8,7 +8,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2010, 2016 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2014, 2016 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -29,15 +29,15 @@
 	indent="yes"
 	/>
  
-<xsl:key name="categories" match="/rss/channel/item[wp:post_type = 'post']/category[@domain='category']" use="@nicename" />
+<xsl:key name="categories" match="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]/category[@domain='category']" use="@nicename" />
 
 <xsl:template match="/rss">
 <j2xml version="15.9.0">
 	<xsl:apply-templates select="/rss/channel/wp:author" mode="wp"/>
-	<xsl:apply-templates select="/rss/channel/item[wp:post_type = 'post']/category[@domain='category']" mode="wp">
-		<xsl:sort order="ascending" select="text()"/>	
+	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]/category[@domain='category']" mode="wp">
+		<xsl:sort order="ascending" select="text()"/>
 	</xsl:apply-templates>
-	<xsl:apply-templates select="/rss/channel/item[wp:post_type = 'post']" mode="wp"/>
+	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]" mode="wp"/>
 </j2xml>
 </xsl:template>
 
@@ -78,7 +78,7 @@
 	<alias><xsl:choose>
 		<xsl:when test="wp:post_name != ''"><xsl:value-of select="wp:post_name"/></xsl:when>
 		<xsl:otherwise><xsl:value-of select="translate(substring-after(link, 'http://'), './?=', '----')"/></xsl:otherwise>
-	</xsl:choose></alias>	
+	</xsl:choose></alias>
 	<introtext><xsl:value-of select="content:encoded"/></introtext>
 	<fulltext></fulltext>
 	<state><xsl:choose>
@@ -106,7 +106,7 @@
 	<xreference></xreference>
 	<featured>0</featured>
 	<rating_sum>0</rating_sum>
-	<rating_count>0</rating_count>		
+	<rating_count>0</rating_count>
 </content>
 </xsl:template>
 

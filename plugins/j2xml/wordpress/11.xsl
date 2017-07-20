@@ -35,7 +35,7 @@
 <j2xml version="12.5.0">
  	<xsl:apply-templates select="/rss/channel/wp:author" />
 	<xsl:apply-templates select="/rss/channel/item/category[@domain='category']" mode="wp">
-		<xsl:sort order="ascending" select="text()"/>	
+		<xsl:sort order="ascending" select="text()"/>
 	</xsl:apply-templates>
 	<xsl:apply-templates select="/rss/channel/item" mode="wp"/>
 </j2xml>
@@ -96,7 +96,7 @@
 	<alias><xsl:choose>
 		<xsl:when test="wp:post_name != ''"><xsl:value-of select="wp:post_name"/></xsl:when>
 		<xsl:otherwise><xsl:value-of select="translate(substring-after(link, 'http://'), './?=', '----')"/></xsl:otherwise>
-	</xsl:choose></alias>	
+	</xsl:choose></alias>
 	<introtext><xsl:value-of select="content:encoded"/></introtext>
 	<fulltext></fulltext>
 	<state><xsl:choose>
@@ -124,7 +124,7 @@
 	<xreference></xreference>
 	<featured>0</featured>
 	<rating_sum>0</rating_sum>
-	<rating_count>0</rating_count>		
+	<rating_count>0</rating_count>
 </content>
 </xsl:template>
 

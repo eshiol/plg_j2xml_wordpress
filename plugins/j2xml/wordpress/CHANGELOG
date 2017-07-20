@@ -1,0 +1,30 @@
+------------------------ 3.7.29 Release [20-July-2017] ------------------------
+
+20-July-2017
+  + js (build 29)
+  ^ Joomla Update System (build 29)
+
+----------------------- 4.4.28 Release  [25-April-2017] -----------------------
+
+25-April-2017
+  # PHP Console (build 26)
+
+10-March-2017
+  + Joomla Update System (build 27)
+
+17-November-2016
+  $ plugin name (build 26)
+  + PHP Console (build 26)
+
+27-October-2016
+  ^ log (build 25)
+
+Legend:
+
+* -> Security Fix
+# -> Bug Fix
+$ -> Language fix or change
++ -> Addition
+^ -> Change
+- -> Removed
+! -> Note

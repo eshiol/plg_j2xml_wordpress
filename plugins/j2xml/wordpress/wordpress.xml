@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="plugin" group="j2xml" method="upgrade">
-  <name>PLG_J2XML_WORDPRESS</name>
+  <name>plg_j2xml_wordpress</name>
   <author>Helios Ciancio</author>
-  <creationDate>July 2016</creationDate>
-  <copyright>(C) 2014, 2016, Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>July 2017</creationDate>
+  <copyright>(C) 2014, 2017 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>4.4.23.60</version>
+  <version>3.7.29.78</version>
   <description>PLG_J2XML_WORDPRESS_XML_DESCRIPTION</description>
+  <updateservers>
+    <server type="extension" priority="2" name="WordPress Importer for J2XML">https://www.eshiol.it/files/plg_j2xml_wordpress/plg_j2xml_wordpress.xml</server>
+  </updateservers>
   <scriptfile>enable.php</scriptfile>
   <files>
     <filename plugin="wordpress">wordpress.php</filename>
     <filename>11.xsl</filename>
     <filename>12.xsl</filename>
-    <filename>index.html</filename>
-    <folder>language</folder>
   </files>
+  <languages folder="language">
+    <language tag="en-GB">en-GB/en-GB.plg_j2xml_wordpress.ini</language>
+    <language tag="en-GB">en-GB/en-GB.plg_j2xml_wordpress.sys.ini</language>
+    <language tag="it-IT">it-IT/it-IT.plg_j2xml_wordpress.ini</language>
+    <language tag="it-IT">it-IT/it-IT.plg_j2xml_wordpress.sys.ini</language>
+  </languages>
+  <media destination="plg_j2xml_wordpress" folder="media">
+    <folder>js</folder>
+  </media>
   <config>
     <fields name="params">
       <fieldset name="basic">
@@ -25,6 +35,17 @@
           <option value="1">JYES</option>
         </field>
         <field name="post_type" type="text" default="" label="PLG_J2XML_WORDPRESS_POSTTYPE_LABEL" description="PLG_J2XML_WORDPRESS_POSTTYPE_DESC"/>
+      </fieldset>
+      <fieldset name="advanced">
+        <field name="debug" type="radio" default="0" class="btn-group btn-group-yesno" description="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_DESC" label="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+        <field name="log" type="text" label="PLG_J2XML_WORDPRESS_DEBUG_FILENAME_LABEL" description="PLG_J2XML_WORDPRESS_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
+        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="PLG_J2XML_WORDPRESS_DEBUG_PHPCONSOLE_DESC" label="PLG_J2XML_WORDPRESS_DEBUG_PHPCONSOLE_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
       </fieldset>
     </fields>
   </config>

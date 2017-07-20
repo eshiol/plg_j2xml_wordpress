@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		3.3.21 plugins/j2xml/wordpress/enable.php
+ * @version		3.7.29 plugins/j2xml/wordpress/enable.php
  * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
@@ -8,7 +8,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2010-2016 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2014, 2017 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -25,13 +25,12 @@ class PlgJ2xmlWordpressInstallerScript
 	{
 		// Enable plugin
 		$db  = JFactory::getDbo();
-		$query = $db->getQuery(true);
-		$query->update('#__extensions');
-		$query->set($db->quoteName('enabled') . ' = 1');
-		$query->where($db->quoteName('type') . ' = ' . $db->quote('plugin'));
-		$query->where($db->quoteName('element') . ' = ' . $db->quote('wordpress'));
-		$query->where($db->quoteName('folder') . ' = ' . $db->quote('j2xml'));
-		$db->setQuery($query);
-		$db->execute();
+		$db->setQuery($db->getQuery(true)
+			->update($db->qn('#__extensions'))
+			->set($db->qn('enabled')   . ' = 1')
+			->where($db->qn('type')    . ' = ' . $db->q('plugin'))
+			->where($db->qn('folder')  . ' = ' . $db->q('j2xml'))
+			->where($db->qn('element') . ' = ' . $db->q('wordpress'))
+		)->execute();
 	}
 }
