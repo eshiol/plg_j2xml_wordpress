@@ -7,6 +7,9 @@
 .buildpath
 .project
 
+files/
+images/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
