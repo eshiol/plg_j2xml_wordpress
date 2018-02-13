@@ -6,7 +6,8 @@
 .settings
 .buildpath
 .project
-.repository
+/files/
+/images/
 
 # Windows image file caches
 Thumbs.db
