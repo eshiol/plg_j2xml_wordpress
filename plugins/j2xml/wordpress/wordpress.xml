@@ -2,15 +2,15 @@
 <extension version="3.0" type="plugin" group="j2xml" method="upgrade">
   <name>plg_j2xml_wordpress</name>
   <author>Helios Ciancio</author>
-  <creationDate>July 2017</creationDate>
-  <copyright>(C) 2014, 2017 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>August 2018</creationDate>
+  <copyright>(C) 2014, 2018 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.7.29.79</version>
+  <version>4.4.30.64</version>
   <description>PLG_J2XML_WORDPRESS_XML_DESCRIPTION</description>
   <updateservers>
-    <server type="extension" priority="2" name="WordPress Importer for J2XML">https://www.eshiol.it/files/plg_j2xml_wordpress/plg_j2xml_wordpress.xml</server>
+    <server type="extension" priority="2" name="J2XML - WordPress Importer">https://www.eshiol.it/files/plg_j2xml_wordpress/plg_j2xml_wordpress.xml</server>
   </updateservers>
   <scriptfile>enable.php</scriptfile>
   <files>
@@ -37,7 +37,8 @@
         <field name="post_type" type="text" default="" label="PLG_J2XML_WORDPRESS_POSTTYPE_LABEL" description="PLG_J2XML_WORDPRESS_POSTTYPE_DESC"/>
       </fieldset>
       <fieldset name="advanced">
-        <field name="debug" type="radio" default="0" class="btn-group btn-group-yesno" description="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_DESC" label="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_LABEL">
+        <field name="debug" type="list" default="" filter="integer" description="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_DESC" label="PLG_J2XML_WORDPRESS_DEBUG_SYSTEM_LABEL">
+          <option value="">JGLOBAL_USE_GLOBAL</option>
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>

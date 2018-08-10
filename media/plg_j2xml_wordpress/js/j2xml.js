@@ -1,13 +1,12 @@
 /**
- * @version		3.7.29 media/plg_j2xml_wordpress/js/j2xml.js
- * 
  * @package		J2XML
  * @subpackage	plg_j2xml_wordpress
- * @since		3.7.29
+ * @version		4.4.30
+ * @since		4.4.29
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2014, 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2014, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -44,10 +43,10 @@ if (typeof(eshiol.j2xml.convert) === 'undefined') {
 }
 
 eshiol.j2xml.wordpress = {};
-eshiol.j2xml.wordpress.version = '3.7.29';
-eshiol.j2xml.wordpress.requires = '17.7.301';
+eshiol.j2xml.wordpress.version = '4.4.30';
+eshiol.j2xml.wordpress.requires = '18.8.309';
 
-console.log('Wordpress Importer for J2XML v'+eshiol.j2xml.wordpress.version);
+console.log('J2XML - Wordpress Importer v'+eshiol.j2xml.wordpress.version);
 
 /**
  * 
@@ -60,7 +59,7 @@ eshiol.j2xml.convert.push(function(xml)
 	if (versionCompare(eshiol.j2xml.version, eshiol.j2xml.wordpress.requires) < 0)
 	{
 		eshiol.renderMessages({
-			'error': ['Wordpress Importer for J2XML v'+eshiol.j2xml.wordpress.version+' requires J2XML v3.7.173']
+			'error': ['J2XML - Wordpress Importer v'+eshiol.j2xml.wordpress.version+' requires J2XML v3.7.181']
 		});
 		return false;
 	}
@@ -96,7 +95,7 @@ eshiol.j2xml.convert.push(function(xml)
 
 		var xmlResp = new DOMParser();
 		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", '/plugins/j2xml/wordpress/'+v+'.xsl', false);
+		xmlHttp.open("GET", '../plugins/j2xml/wordpress/'+v+'.xsl', false);
 		// Make sure the returned document has the correct MIME type
 		xmlHttp.overrideMimeType("application/xslt+xml");
 		xmlHttp.send(null);
