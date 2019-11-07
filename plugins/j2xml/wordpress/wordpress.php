@@ -20,11 +20,11 @@
 defined('_JEXEC') or die('Restricted access.');
 
 use Joomla\Registry\Registry;
+use eshiol\j2xml\Version;
 
 jimport('joomla.plugin.plugin');
 jimport('joomla.application.component.helper');
 jimport('joomla.filesystem.file');
-jimport('eshiol.j2xml.version');
 
 class plgJ2xmlWordpress extends JPlugin
 {
@@ -95,7 +95,7 @@ class plgJ2xmlWordpress extends JPlugin
 			$error = true;
 		}
 
-		if (version_compare(J2XMLVersion::getFullVersion(), '17.7.301') == -1)
+		if (version_compare(Version::getFullVersion(), '17.7.301') == -1)
 		{
 			JLog::add(JText::_('PLG_J2XML_WORDPRESS').' '.JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_LIB'), JLog::WARNING, 'plg_j2xml_wordpress');
 			$error = true;
