@@ -2,12 +2,12 @@
 <extension version="3.0" type="plugin" group="j2xml" method="upgrade">
   <name>plg_j2xml_wordpress</name>
   <author>Helios Ciancio</author>
-  <creationDate>August 2018</creationDate>
-  <copyright>(C) 2014, 2018 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>September 2022</creationDate>
+  <copyright>(C) 2014 - 2022 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>4.4.30.64</version>
+  <version>4.4.33</version>
   <description>PLG_J2XML_WORDPRESS_XML_DESCRIPTION</description>
   <updateservers>
     <server type="extension" priority="2" name="J2XML - WordPress Importer">https://www.eshiol.it/files/plg_j2xml_wordpress/plg_j2xml_wordpress.xml</server>
@@ -43,10 +43,6 @@
           <option value="0">JNO</option>
         </field>
         <field name="log" type="text" label="PLG_J2XML_WORDPRESS_DEBUG_FILENAME_LABEL" description="PLG_J2XML_WORDPRESS_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
-        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="PLG_J2XML_WORDPRESS_DEBUG_PHPCONSOLE_DESC" label="PLG_J2XML_WORDPRESS_DEBUG_PHPCONSOLE_LABEL">
-          <option value="1">JYES</option>
-          <option value="0">JNO</option>
-        </field>
       </fieldset>
     </fields>
   </config>

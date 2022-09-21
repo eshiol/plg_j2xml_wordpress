@@ -1,18 +1,18 @@
 <?php
 /**
- * @version		3.7.29 plugins/j2xml/wordpress/wordpress.php
- * 
- * @package		J2XML
- * @subpackage	plg_j2xml_wordpress
- * @since		3.1
+ * @package     Joomla.Plugins
+ * @subpackage  J2xml.Wordpress
  *
- * @author		Helios Ciancio <info@eshiol.it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2014, 2017 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * @version     __DEPLOY_VERSION__
+ * @since       3.1
+ *
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        https://www.eshiol.it
+ * @copyright   Copyright (C) 2014 - 2022 Helios Ciancio. All Rights Reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License 
+ * is derivative of works licensed under the GNU General Public License
  * or other free or open source software licenses.
  */
  
@@ -20,7 +20,7 @@
 defined('_JEXEC') or die('Restricted access.');
 
 use Joomla\Registry\Registry;
-use eshiol\j2xml\Version;
+use eshiol\J2xml\Version;
 
 jimport('joomla.plugin.plugin');
 jimport('joomla.application.component.helper');
@@ -46,25 +46,21 @@ class plgJ2xmlWordpress extends JPlugin
 	{
 		parent::__construct($subject, $config);
 
-		if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG)
+		if ($this->params->get('debug', JComponentHelper::getParams('com_j2xml')->get('debug', 0)) || defined('JDEBUG') && JDEBUG)
 		{
 			JLog::addLogger(array('text_file' => $this->params->get('log', 'eshiol.log.php'), 'extension' => 'plg_j2xml_wordpress_file'), JLog::ALL, array('plg_j2xml_wordpress'));
 		}
 
 		if (PHP_SAPI == 'cli')
 		{
-			JLog::addLogger(array('logger' => 'echo', 'extension' => 'plg_j2xml_wordpress'), JLOG::ALL & ~JLOG::DEBUG, array('plg_j2xml_wordpress'));
+			JLog::addLogger(array('logger' => 'echo', 'extension' => 'plg_j2xml_wordpress'), JLog::ALL & ~JLog::DEBUG, array('plg_j2xml_wordpress'));
 		}
 		else
 		{
-			JLog::addLogger(array('logger' => $this->params->get('logger', 'messagequeue'), 'extension' => 'plg_j2xml_wordpress'), JLOG::ALL & ~JLOG::DEBUG, array('plg_j2xml_wordpress'));
-			if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-			{
-				JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'plg_j2xml_wordpress_phpconsole'),  JLOG::DEBUG, array('plg_j2xml_wordpress'));
-			}
+			JLog::addLogger(array('logger' => $this->params->get('logger', 'messagequeue'), 'extension' => 'plg_j2xml_wordpress'), JLog::ALL & ~JLog::DEBUG, array('plg_j2xml_wordpress'));
 		}
 
-		JLog::add(new JLogEntry(__METHOD__, JLOG::DEBUG, 'plg_j2xml_wordpress'));
+		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_j2xml_wordpress'));
 	}
 
 	/**
@@ -79,9 +75,9 @@ class plgJ2xmlWordpress extends JPlugin
 	 */
 	public function onBeforeImport($context, &$xml)
 	{
-		JLog::add(new JLogEntry(__METHOD__, JLOG::DEBUG, 'plg_j2xml_wordpress'));
-		JLog::add($context, JLOG::DEBUG, 'plg_j2xml_wordpress');
-		JLog::add(print_r($this->params, true), JLOG::DEBUG, 'plg_j2xml_wordpress');
+		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_j2xml_wordpress'));
+		JLog::add($context, JLog::DEBUG, 'plg_j2xml_wordpress');
+		JLog::add(print_r($this->params, true), JLog::DEBUG, 'plg_j2xml_wordpress');
 
 		if (get_class($xml) != 'SimpleXMLElement')
 		{
@@ -91,13 +87,13 @@ class plgJ2xmlWordpress extends JPlugin
 		$error = false;
 		if (!class_exists('XSLTProcessor'))
 		{
-			JLog::add(JText::_('PLG_J2XML_WORDPRESS').' '.JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_XSL'), JLog::WARNING, 'plg_j2xml_wordpress');
+			JLog::add(JText::_('PLG_J2XML_WORDPRESS') . ' ' . JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_XSL'), JLog::WARNING, 'plg_j2xml_wordpress');
 			$error = true;
 		}
 
 		if (version_compare(Version::getFullVersion(), '17.7.301') == -1)
 		{
-			JLog::add(JText::_('PLG_J2XML_WORDPRESS').' '.JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_LIB'), JLog::WARNING, 'plg_j2xml_wordpress');
+			JLog::add(JText::_('PLG_J2XML_WORDPRESS') . ' ' . JText::_('PLG_J2XML_WORDPRESS_MSG_REQUIREMENTS_LIB'), JLog::WARNING, 'plg_j2xml_wordpress');
 			$error = true;
 		}
 
@@ -134,7 +130,7 @@ class plgJ2xmlWordpress extends JPlugin
 			return true;
 		}
 
-		$xsl = file_get_contents(JPATH_ROOT.'/plugins/j2xml/wordpress/'.$version.'.xsl');
+		$xsl = file_get_contents(JPATH_ROOT . '/plugins/j2xml/wordpress/' . $version . '.xsl');
 
 		if ($this->params->get('readmore', 1))
 		{
@@ -151,8 +147,8 @@ class plgJ2xmlWordpress extends JPlugin
 			);
 		}
 
-		$default_post_query = $post_query = "(wp:post_type = 'post') or (wp:post_type = 'page')";
-		$unsupported_query = "(wp:post_type != 'post') and (wp:post_type != 'page')";
+		$default_post_query = $post_query = "(wp:post_type = 'post') or (wp:post_type = 'page') or (wp:post_type = 'news')";
+		$unsupported_query = "(wp:post_type != 'post') and (wp:post_type != 'page') and (wp:post_type != 'news')";
 		foreach (explode(',', str_replace(' ', '', $this->params->get('post_type'))) as $type)
 		{
 			$post_query .=  " or (wp:post_type = '".$type."')";
@@ -164,7 +160,7 @@ class plgJ2xmlWordpress extends JPlugin
 			$xsl
 		);
 		$test_unsupported = "[".$unsupported_query."]";
-		JLog::add(new JLogEntry($xsl, JLOG::DEBUG, 'plg_j2xml_wordpress'));
+		JLog::add(new JLogEntry($xsl, JLog::DEBUG, 'plg_j2xml_wordpress'));
 
 		$xslt = new XSLTProcessor();
 		$xslfile = new DOMDocument();
@@ -191,7 +187,7 @@ class plgJ2xmlWordpress extends JPlugin
 	 */
 	public function onAfterDispatch()
 	{
-		JLog::add(new JLogEntry(__METHOD__, JLOG::DEBUG, 'plg_j2xml_wordpress'));
+		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_j2xml_wordpress'));
 	
 		$app = JFactory::getApplication();
 		if ($app->getName() != 'administrator')
@@ -207,19 +203,19 @@ class plgJ2xmlWordpress extends JPlugin
 	
 		$option = JRequest::getVar('option');
 		$view = JRequest::getVar('view');
-	
+
 		if (($option == 'com_j2xml') && (!$view || $view == 'cpanel'))
 		{
 			$doc = JFactory::getDocument();
 			if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG)
 			{
-				JLog::add(new JLogEntry('loading j2xml.js...', JLOG::DEBUG, 'plg_j2xml_wordpress'));
-				$doc->addScript("../media/plg_j2xml_wordpress/js/j2xml.js");
+				JLog::add(new JLogEntry('loading j2xml.js...', JLog::DEBUG, 'plg_j2xml_wordpress'));
+				$doc->addScript("../media/plg_j2xml_wordpress/js/j2xml.js", array('version'=>'auto'));
 			}
 			else
 			{
-				JLog::add(new JLogEntry('loading j2xml.min.js...', JLOG::DEBUG, 'plg_j2xml_wordpress'));
-				$doc->addScript("../media/plg_j2xml_wordpress/js/j2xml.min.js");
+				JLog::add(new JLogEntry('loading j2xml.min.js...', JLog::DEBUG, 'plg_j2xml_wordpress'));
+				$doc->addScript("../media/plg_j2xml_wordpress/js/j2xml.min.js", array('version'=>'auto'));
 			}
 		}
 		return true;

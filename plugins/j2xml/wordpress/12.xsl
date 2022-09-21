@@ -1,19 +1,18 @@
 <!--
-/** 
- * @version		4.4.24 plugins/j2xml/wordpress/12.xsl
- * 
- * @package		J2XML
- * @subpackage	plg_j2xml_wordpress
- * @version		4.4.30
- * @since		3.1
+/**
+ * @package     Joomla.Plugins
+ * @subpackage  J2xml.Wordpress
  *
- * @author		Helios Ciancio <info@eshiol.it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2014, 2018 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * @version     __DEPLOY_VERSION__
+ * @since       3.1
+ *
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        https://www.eshiol.it
+ * @copyright   Copyright (C) 2014 - 2022 Helios Ciancio. All Rights Reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License 
+ * is derivative of works licensed under the GNU General Public License
  * or other free or open source software licenses.
  */
 -->
@@ -29,17 +28,17 @@
 	encoding="UTF-8"
 	indent="yes"
 	/>
- 
-<xsl:key name="categories" match="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]/category[@domain='category']" use="@nicename" />
+
+<xsl:key name="categories" match="/rss/channel/item[(wp:post_type = 'news') or (wp:post_type = 'page') or (wp:post_type = 'post')]/category[@domain='category']" use="@nicename" />
 
 <xsl:template match="/rss">
-<j2xml version="18.8.0">
+<j2xml version="19.2.0">
 	<base><xsl:value-of select="/rss/channel/link"/></base>
 	<xsl:apply-templates select="/rss/channel/wp:author" mode="wp"/>
-	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]/category[@domain='category']" mode="wp">
+	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'news') or (wp:post_type = 'page') or (wp:post_type = 'post')]/category[@domain='category']" mode="wp">
 		<xsl:sort order="ascending" select="text()"/>
 	</xsl:apply-templates>
-	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'post') or (wp:post_type = 'page')]" mode="wp"/>
+	<xsl:apply-templates select="/rss/channel/item[(wp:post_type = 'news') or (wp:post_type = 'page') or (wp:post_type = 'post')]" mode="wp"/>
 </j2xml>
 </xsl:template>
 

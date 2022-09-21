@@ -1,3 +1,19 @@
+---------------------- 4.4.32 Release  [7-November-2019] ----------------------
+
+7-November-2019
+  + debug: use global (build 32)
+  $ debug parameters (build 32)
+
+---------------------- 4.4.31 Release [1-September-2019] ----------------------
+
+1-September-2019
+  + J2XML 3.7 compatibility (build 31)
+
+---------------------- 4.4.31 Release [1-September-2019] ----------------------
+
+1-September-2019
+  + J2XML 3.7 compatibility (build 31)
+
 ----------------------- 4.4.30 Release  [6-August-2018] -----------------------
 
 6-August-2018
