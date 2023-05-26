@@ -2,8 +2,8 @@
 <extension version="3.0" type="plugin" group="j2xml" method="upgrade">
   <name>plg_j2xml_wordpress</name>
   <author>Helios Ciancio</author>
-  <creationDate>September 2022</creationDate>
-  <copyright>(C) 2014 - 2022 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>__DEPLOY_DATE__</creationDate>
+  <copyright>(C) 2014 - 2023 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>

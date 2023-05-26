@@ -7,7 +7,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2014 - 2022 Helios Ciancio. All Rights Reserved
+ * @copyright   Copyright (C) 2014 - 2023 Helios Ciancio. All Rights Reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -30,7 +30,7 @@
 		}
 	});
 }());
-  
+ 
 if (typeof(eshiol) === 'undefined') {
 	eshiol = {};
 }
@@ -50,12 +50,12 @@ eshiol.j2xml.wordpress.requires = '18.8.309';
 console.log('J2XML - Wordpress Importer v'+eshiol.j2xml.wordpress.version);
 
 /**
- * 
+ *
  * @param {} root
  * @return  {}
- */ 
+ */
 eshiol.j2xml.convert.push(function(xml)
-{   
+{  
 	console.log('eshiol.j2xml.convert.wordpress');
 	if (versionCompare(eshiol.j2xml.version, eshiol.j2xml.wordpress.requires) < 0)
 	{
@@ -81,7 +81,7 @@ eshiol.j2xml.convert.push(function(xml)
 		if (!generator.text().match(/(http|https):\/\/wordpress.(org|com)\//)) return xml;
 
 		version = jQuery(channel[0]).find("wxr_version");
-		if (version.length == 0) 
+		if (version.length == 0)
 		{
 			var v = '12';
 		}

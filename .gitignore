@@ -6,11 +6,10 @@
 .settings
 .buildpath
 .project
+
+# Joomla
 /files/
 /images/
-
-files/
-images/
 
 # Windows image file caches
 Thumbs.db

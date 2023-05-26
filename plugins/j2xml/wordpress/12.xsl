@@ -8,7 +8,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2014 - 2022 Helios Ciancio. All Rights Reserved
+ * @copyright   Copyright (C) 2014 - 2023 Helios Ciancio. All Rights Reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * J2XML is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -23,7 +23,7 @@
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:wp="http://wordpress.org/export/1.2/"
 	>
-<xsl:output 
+<xsl:output
 	cdata-section-elements="title alias introtext fulltext attribs metadata name language"
 	encoding="UTF-8"
 	indent="yes"
